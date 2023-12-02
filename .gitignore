@@ -1,2 +1,3 @@
 # Git ignore logs
 work/amwell/amwell-weekly-report-script/logs/*
+.DS_Store

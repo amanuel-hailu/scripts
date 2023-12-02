@@ -1,0 +1,78 @@
+# Basic aliases for colorls
+alias ls='colorls --group-directories-first' # List with color and icons
+alias ll='colorls --group-directories-first -lA' # Long format list with color and icons
+alias la='colorls --group-directories-first -a' # List all files with color and icons
+alias l1='colorls --group-directories-first -1' # One column list with color and icons
+
+# Colorls with different sorting options
+alias lss='colorls --sort=size -la' # Sort by size
+alias lst='colorls --sort=time -la' # Sort by time
+
+# Directory-focused aliases
+alias ld='colorls --group-directories-first --dirs' # List only directories
+alias lf='colorls --group-directories-first --files -l' # List only files
+
+# Long format list with report
+alias lreport='colorls --group-directories-first -lA --report' # List with color and icons
+
+# Tree view with colorls (requires tree command)
+alias lstree='colorls --group-directories-first --tree' # Tree view
+
+# Quickly navigate to system directories
+alias desk='cd ~/Desktop'
+alias down='cd ~/Downloads'
+alias docs='cd ~/Documents'
+alias home='cd ~'
+alias dev='cd ~/dev'
+alias scripts='cd ~/scripts'
+
+alias clr='clear' # Clear the terminal
+alias update='brew update && brew upgrade' # Update Homebrew packages
+
+# File and Directory Operations
+alias mkdir='mkdir -pv' # Create directory with parent directories as needed
+alias fz='open -a Finder .' # Open current directory in Finder
+alias cp='cp -iv' # Confirm before overwriting something on copy
+alias mv='mv -iv' # Confirm before overwriting something on move
+alias ln='ln -iv' # Confirm before overwriting something on link
+
+# Navigate using cd
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+
+alias zshreload="source ~/.zshrc" # Reloads the Zsh configuration
+alias bashreload='source ~/.bashrc' # Reload bash profile
+alias reload='zshreload && bashreload' # Reload both bash and zsh
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+
+# macOS system shortcuts
+alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend' # Lock the screen
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder' # Hide hidden files
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder' # Show hidden files
+
+# My custom scripts:
+alias creategitrepo='~/scripts/personal/create_and_push_git_repo.sh'
+
+# To use this function, just call 'enhanced_ls'
+function enhanced_ls() {
+    # First, use 'du' to get the size of each item in the current directory
+    echo "Calculating sizes... (This may take a moment)"
+    du -hcs * | sort -rh | head -n 10 > /tmp/du_output
+
+    # Now, use 'colorls' to list the contents with color and icons
+    colorls --group-directories-first
+
+    # Finally, display the 'du' output
+    echo
+    echo "Top Disk Usage in Current Directory:"
+    cat /tmp/du_output
+    rm /tmp/du_output
+}
+alias diskspace='df -h' # Show disk space
+alias path='echo -e ${PATH//:/\\n}' # Show all executable paths
+alias cat='bat' # Use bat instead of cat
+
+
