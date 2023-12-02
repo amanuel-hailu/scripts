@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# Script Name: create_and_push_git_repo.sh
 # Description: This script creates a new Git repository, initializes it, and pushes it to GitHub.
 # Usage: ./create_and_push_git_repo.sh [repository-name]
 
-# To setup gh on macOS:
+# Setup:
+
+# 1. To setup gh on macOS:
 # brew install gh
 # gh auth login
+
+# 2. To give the script permission to execute:
+# chmod +x create_and_push_git_repo.sh
 
 # Function to handle errors
 error_exit()
