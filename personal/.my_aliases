@@ -27,8 +27,8 @@ source ~/headbash/bashrc/shortcuts/mac_source_overide.sh
 # My work overides
 alias www="cd /opt/homebrew/var/www; ll"
 alias apa="cd /opt/homebrew/etc/httpd; ll"
-alias aplog="cd /opt/homebrew/var/log/httpd ; ll"
-alias apconf="cd /opt/homebrew/etc/httpd; ll"
+alias apalog="cd /opt/homebrew/var/log/httpd ; ll"
+alias apaconf="cd /opt/homebrew/etc/httpd; ll"
 
 # Basic aliases for colorls
 # alias ls='colorls --group-directories-first' # List with color and icons
@@ -55,13 +55,27 @@ alias lst='lsd -ltra' # List with time
 alias ld='lsd -dla */' # List only directories
 alias lstree='lsd --tree --group-dirs first' # Tree view
 
+# Remove aliases
+alias rm='rm -iv' # Confirm before removing something and show verbose output
+alias rmf='rm -fv' # Force remove something and show verbose output
+alias rmd='rm -irv' # Confirm before removing a directory and show verbose output
+alias rmdf='rm -rfv' # Force remove a directory and show verbose output
+
+
+
 # Quickly navigate to system directories
 alias desk='cd ~/Desktop; ll'
 alias down='cd ~/Downloads; ll'
 alias docs='cd ~/Documents; ll'
 alias home='cd ~; ll'
-# alias dev='cd ~/dev; ll'
+alias le='cd ~/Documents/PERSONAL/Learning; ll'
 alias scripts='cd ~/scripts; ll'
+
+# Quickly navigate to learning resources
+alias leterra='cd ~/Documents/PERSONAL/Learning/Terraform; ll'
+
+# Aliases for running scripts
+alias creategitrepo='~/scripts/personal/create_and_push_git_repo.sh'
 
 # Quickly open directories with vscode
 alias vsc='code -n'
@@ -71,15 +85,20 @@ alias vscamwell='vsc ~/scripts/work/amwell/amwell-weekly-report-script'
 alias vscalias='vsc ~/.my_aliases'
 alias vsczsh='vsc ~/.zshrc ~/.zprofile';
 alias vscbash='vsc ~/.bashrc';
+# Quicly open Work directories
+alias vscapaconf='vsc /opt/homebrew/etc/httpd'
 
 # Quickly open learning resources
 alias vscterra='vsc ~/Documents/PERSONAL/Learning/Terraform/'
+
+# Quickly open projects
+alias vscportfolio='vsc ~/Documents/PERSONAL/Learning/Nextjs/personal-portfolio-site'
 
 alias clr='clear' # Clear the terminal
 alias update='brew update && brew upgrade' # Update Homebrew packages
 
 # File and Directory Operations
-alias mkdir='mkdir -pv' # Create directory with parent directories as needed
+alias mkdir='mkdir -pv' # Create directory with parent directories as needed | example: mkdir -pv ~/Desktop/test
 alias fz='open -a Finder .' # Open current directory in Finder
 alias cp='cp -iv' # Confirm before overwriting something on copy
 alias mv='mv -iv' # Confirm before overwriting something on move
