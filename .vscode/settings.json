@@ -1,0 +1,57 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "lms2prod",
+      "username": "root",
+      "database": "lms2prod"
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "rumba-lmsdb-1.cluster-caj5nqumurqx.us-east-1.rds.amazonaws.com",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "RUMBA",
+      "username": "lmsuser",
+      "database": "lms2prod",
+      "askForPassword": true
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "127.0.0.1",
+      "port": 3307,
+      "driver": "MySQL",
+      "name": "PROD",
+      "username": "developers",
+      "database": "lms2prod",
+      "askForPassword": true
+    },
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "DEMONHEAD",
+      "database": "demonhead",
+      "username": "sa",
+      "password": "Aman227027"
+    }
+  ]
+}
