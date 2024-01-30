@@ -29,6 +29,7 @@ alias www="cd /opt/homebrew/var/www; ll"
 alias apa="cd /opt/homebrew/etc/httpd; ll"
 alias apalog="cd /opt/homebrew/var/log/httpd ; ll"
 alias apaconf="cd /opt/homebrew/etc/httpd; ll"
+alias lmsc="cd ~/dev-repositories/lms/lms-core; ll;"
 
 # Basic aliases for colorls
 # alias ls='colorls --group-directories-first' # List with color and icons
@@ -47,21 +48,19 @@ alias lsreport='colorls --group-directories-first -lA --report' # List with colo
 # alias lstree='colorls --group-directories-first --tree' # Tree view
 
 # Replace with lsd
-alias ls='lsd --group-dirs first' # List with color and icons
+alias ls='lsd --group-dirs first'     # List with color and icons
 alias ll='lsd -la --group-dirs first' # Long format list with color and icons
 # alias la='lsd -la --group-dirs first' # Long format list with color and icons
-alias lss='lsd -lSa' # List with size
-alias lst='lsd -ltra' # List with time
-alias ld='lsd -dla */' # List only directories
+alias lss='lsd -lSa'                         # List with size
+alias lst='lsd -ltra'                        # List with time
+alias ld='lsd -dla */'                       # List only directories
 alias lstree='lsd --tree --group-dirs first' # Tree view
 
 # Remove aliases
-alias rm='rm -iv' # Confirm before removing something and show verbose output
-alias rmf='rm -fv' # Force remove something and show verbose output
-alias rmd='rm -irv' # Confirm before removing a directory and show verbose output
+alias rm='rm -iv'    # Confirm before removing something and show verbose output
+alias rmf='rm -fv'   # Force remove something and show verbose output
+alias rmd='rm -irv'  # Confirm before removing a directory and show verbose output
 alias rmdf='rm -rfv' # Force remove a directory and show verbose output
-
-
 
 # Quickly navigate to system directories
 alias desk='cd ~/Desktop; ll'
@@ -83,8 +82,8 @@ alias vscdev='vsc ~/dev'
 alias vscscripts='vsc ~/scripts'
 alias vscamwell='vsc ~/scripts/work/amwell/amwell-weekly-report-script'
 alias vscalias='vsc ~/.my_aliases'
-alias vsczsh='vsc ~/.zshrc ~/.zprofile';
-alias vscbash='vsc ~/.bashrc';
+alias vsczsh='vsc ~/.zshrc ~/.zprofile'
+alias vscbash='vsc ~/.bashrc'
 # Quicly open Work directories
 alias vscapaconf='vsc /opt/homebrew/etc/httpd'
 
@@ -94,23 +93,23 @@ alias vscterra='vsc ~/Documents/PERSONAL/Learning/Terraform/'
 # Quickly open projects
 alias vscportfolio='vsc ~/Documents/PERSONAL/Learning/Nextjs/personal-portfolio-site'
 
-alias clr='clear' # Clear the terminal
+alias clr='clear'                          # Clear the terminal
 alias update='brew update && brew upgrade' # Update Homebrew packages
 
 # File and Directory Operations
-alias mkdir='mkdir -pv' # Create directory with parent directories as needed | example: mkdir -pv ~/Desktop/test
+alias mkdir='mkdir -pv'     # Create directory with parent directories as needed | example: mkdir -pv ~/Desktop/test
 alias fz='open -a Finder .' # Open current directory in Finder
-alias cp='cp -iv' # Confirm before overwriting something on copy
-alias mv='mv -iv' # Confirm before overwriting something on move
-alias ln='ln -iv' # Confirm before overwriting something on link
+alias cp='cp -iv'           # Confirm before overwriting something on copy
+alias mv='mv -iv'           # Confirm before overwriting something on move
+alias ln='ln -iv'           # Confirm before overwriting something on link
 
 # Navigate using cd
 alias ..='cd ..; ll'
 alias ...='cd ../../; ll'
 alias ....='cd ../../../; ll'
 
-alias zshreload="source ~/.zshrc" # Reloads the Zsh configuration
-alias bashreload='source ~/.bashrc' # Reload bash profile
+alias zshreload="source ~/.zshrc"      # Reloads the Zsh configuration
+alias bashreload='source ~/.bashrc'    # Reload bash profile
 alias reload='zshreload && bashreload' # Reload both bash and zsh
 
 # Colorize grep output (good for log files)
@@ -118,8 +117,8 @@ alias grep='grep --color=auto'
 
 # macOS system shortcuts
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend' # Lock the screen
-alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder' # Hide hidden files
-alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder' # Show hidden files
+alias hidefiles='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'       # Hide hidden files
+alias showfiles='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'        # Show hidden files
 
 # My custom scripts:
 alias creategitrepo='~/scripts/personal/create_and_push_git_repo.sh'
@@ -128,7 +127,7 @@ alias creategitrepo='~/scripts/personal/create_and_push_git_repo.sh'
 function enhanced_ls() {
     # First, use 'du' to get the size of each item in the current directory
     echo "Calculating sizes... (This may take a moment)"
-    du -hcs * | sort -rh | head -n 10 > /tmp/du_output
+    du -hcs * | sort -rh | head -n 10 >/tmp/du_output
 
     # Now, use 'colorls' to list the contents with color and icons
     colorls --group-directories-first
@@ -139,8 +138,39 @@ function enhanced_ls() {
     cat /tmp/du_output
     rm /tmp/du_output
 }
-alias diskspace='df -h' # Show disk space
+alias diskspace='df -h'             # Show disk space
 alias path='echo -e ${PATH//:/\\n}' # Show all executable paths
-alias cat='bat' # Use bat instead of cat
+alias cat='bat'                     # Use bat instead of cat
 
+# Usage: dust
+# Usage: dust <dir>
+# Usage: dust <dir>  <another_dir> <and_more>
+# Usage: dust -p (full-path - Show fullpath of the subdirectories)
+# Usage: dust -s (apparent-size - shows the length of the file as opposed to the amount of disk space it uses)
+# Usage: dust -n 30  (Shows 30 directories instead of the default [default is terminal height])
+# Usage: dust -d 3  (Shows 3 levels of subdirectories)
+# Usage: dust -D (Show only directories (eg dust -D))
+# Usage: dust -F (Show only files - finds your largest files)
+# Usage: dust -r (reverse order of output)
+# Usage: dust -H (si print sizes in powers of 1000 instead of 1024)
+# Usage: dust -X ignore  (ignore all files and directories with the name 'ignore')
+# Usage: dust -x (Only show directories on the same filesystem)
+# Usage: dust -b (Do not show percentages or draw ASCII bars)
+# Usage: dust -B (--bars-on-right - Percent bars moved to right side of screen])
+# Usage: dust -i (Do not show hidden files)
+# Usage: dust -c (No colors [monochrome])
+# Usage: dust -f (Count files instead of diskspace)
+# Usage: dust -t (Group by filetype)
+# Usage: dust -z 10M (min-size, Only include files larger than 10M)
+# Usage: dust -e regex (Only include files matching this regex (eg dust -e "\.png$" would match png files))
+# Usage: dust -v regex (Exclude files matching this regex (eg dust -v "\.png$" would ignore png files))
+# Usage: dust -L (dereference-links - Treat sym links as directories and go into them)
+# Usage: dust -P (Disable the progress indicator)
+# Usage: dust -R (For screen readers. Removes bars/symbols. Adds new column: depth level. (May want to use -p for full path too))
+# Usage: dust -S (Custom Stack size - Use if you see: 'fatal runtime error: stack overflow' (default allocation: low memory=1048576, high memory=1073741824)"),
+# Usage: dust --skip-total (No total row will be displayed)
+# Usage: dust -z 4000000 (Exclude output files/directories below size 4MB)
 
+# dust alias to sort by size
+alias dus='dust -s'
+# dust
