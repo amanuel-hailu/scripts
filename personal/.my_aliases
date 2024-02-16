@@ -25,11 +25,20 @@ source ~/headbash/bashrc/shortcuts/mac_source_overide.sh
 # alias solrstart="sudo /usr/local/solr720/bin/solr start -force"
 
 # My work overides
+alias solrstart="brew services start solr"
+alias solrstop="brew services stop solr"
 alias www="cd /opt/homebrew/var/www; ll"
-alias apa="cd /opt/homebrew/etc/httpd; ll"
-alias apalog="cd /opt/homebrew/var/log/httpd ; ll"
-alias apaconf="cd /opt/homebrew/etc/httpd; ll"
+# alias apaconf="cd /opt/homebrew/etc/httpd; ll"
 alias lmsc="cd ~/dev-repositories/lms/lms-core; ll;"
+
+# My service config aliases
+alias apa="cd /opt/homebrew/etc/httpd; ll"
+alias apaconf="cd /opt/homebrew/etc/httpd; ll"
+alias apalog="cd /opt/homebrew/var/log/httpd ; ll"
+alias phpconf="cd /opt/homebrew/etc/php/$(php -v | grep -o -E '[0-9]+\.[0-9]+' | head -n 1);echo The path: $(pwd);echo The php config: $(pwd)/php.ini; ll"
+alias solrlog="cd /opt/homebrew/var/log/solr; ll"
+alias myconf="cd /opt/homebrew/etc; echo The path: $(pwd); echo The mysql config: $(pwd)/my.cnf; ll"
+alias phpmyadminconf="cd /opt/homebrew/etc; echo The path: $(pwd); echo The phpmyadmin config: $(pwd)/phpmyadmin.config.inc.php; ll"
 
 # Basic aliases for colorls
 # alias ls='colorls --group-directories-first' # List with color and icons
@@ -92,6 +101,12 @@ alias vscterra='vsc ~/Documents/PERSONAL/Learning/Terraform/'
 
 # Quickly open projects
 alias vscportfolio='vsc ~/Documents/PERSONAL/Learning/Nextjs/personal-portfolio-site'
+
+# Quickly open service config files
+alias vscapaconf='vsc /opt/homebrew/etc/httpd'
+alias vscphpadmin='vsc /opt/homebrew/etc/phpmyadmin.config.inc.php'
+alias vscmyconf='vsc /opt/homebrew/etc/my.cnf'
+alias vscphpconf='code /opt/homebrew/etc/php/$(php -v | grep -o -E "[0-9]+\.[0-9]+" | head -n 1)/php.ini'
 
 alias clr='clear'                          # Clear the terminal
 alias update='brew update && brew upgrade' # Update Homebrew packages
