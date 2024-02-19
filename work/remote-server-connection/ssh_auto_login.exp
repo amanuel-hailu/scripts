@@ -1,0 +1,33 @@
+#!/usr/bin/expect -f
+
+# This script is used to automate SSH login using 1Password for password management.
+# It uses the 'expect' command to automate interactions with the SSH login process.
+
+# The script accepts two arguments:
+# 1. The 1Password key reference for the SSH password (e.g., "op://Work Account/SSH RUMBA UTIL/password")
+# 2. The SSH host name as defined in the SSH config file (e.g., "rumbautil")
+
+# The first argument is assigned to the 'pass_reference' variable
+set pass_reference [lindex $argv 0]
+
+# The second argument is assigned to the 'ssh_hostname' variable
+set ssh_hostname [lindex $argv 1]
+
+# The 'exec' command is used to execute the 'op read' command, which retrieves the password from 1Password
+# The retrieved password is assigned to the 'password' variable
+set password [exec op read "$pass_reference"]
+
+# The 'spawn' command is used to start the SSH process for the server configured in the SSH config file
+spawn ssh $ssh_hostname
+
+# The 'expect' command waits for the password prompt
+expect "password:"
+
+# The 'send' command provides the password when the password prompt is encountered
+send "$password\r"
+
+# To run this script, use the following command:
+# ./ssh_1password.sh "op://Work Account/SSH RUMBA UTIL/password" rumbautil
+
+# The 'interact' command allows the user to interact with the spawned process after the script has run
+interact
