@@ -40,6 +40,15 @@ alias solrlog="cd /opt/homebrew/var/log/solr; ll"
 alias myconf="cd /opt/homebrew/etc; echo The path: $(pwd); echo The mysql config: $(pwd)/my.cnf; ll"
 alias phpmyadminconf="cd /opt/homebrew/etc; echo The path: $(pwd); echo The phpmyadmin config: $(pwd)/phpmyadmin.config.inc.php; ll"
 
+# My remote server aliases
+alias sshre="ssh release"
+
+# Note: This is a custom script that uses expect to login to the remote server
+# It takes the password from 1password and logs in to the server
+# It also takes the server name as an argument. We pass the server name as an argument to the script which is defined in the alias but originally it is defined in ssh config file located at ~/.ssh/config
+alias sshrutil="/Users/aman-mac-work/scripts/work/remote-server-connection/ssh_auto_login.exp 'op://Work Account/SSH RUMBA UTIL/password' rumbautil"
+alias sshruweb="/Users/aman-mac-work/scripts/work/remote-server-connection/ssh_auto_login.exp 'op://Work Account/SSH RUMBA WEB/password' rumbaweb"
+
 # Basic aliases for colorls
 # alias ls='colorls --group-directories-first' # List with color and icons
 # alias ll='colorls --group-directories-first -lA' # Long format list with color and icons
